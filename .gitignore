@@ -1,0 +1,22 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Windwos
+Thumbs.db
+
+# Maven
+log/
+target/
+
+#self
+tagclouds/
