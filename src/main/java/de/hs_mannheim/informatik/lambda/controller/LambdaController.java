@@ -2,11 +2,16 @@ package de.hs_mannheim.informatik.lambda.controller;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.sql.Dataset;
@@ -14,6 +19,9 @@ import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -119,6 +127,43 @@ public class LambdaController {
 		results.forEach(System.out::println);
 
 		return new ResponseEntity<String>("Spark Test", null, 200);
+	}
+
+	@GetMapping("/spark-image")
+	@ResponseBody
+	public void sparkImage(HttpServletResponse response) throws IOException {
+
+		var wordFrequenciesTup = sparkSession.read().textFile("./sherlock_holmes.txt")
+				.javaRDD().flatMap(
+						s -> Arrays.asList(s.split("\\W+")).iterator())
+				.map(String::trim)
+				.filter(v -> v.length() > 3)
+				.map(String::toUpperCase)
+				.mapToPair(
+						token -> new Tuple2<>(token, 1))
+				.reduceByKey((x, y) -> x + y)
+				.collect();// normalizer
+
+		// TODO: WordFrequency is not serializable
+		var wordFrequencies = wordFrequenciesTup.stream().map(t -> new WordFrequency(t._1, t._2))
+				.collect(Collectors.toList());
+
+		final Dimension dimension = new Dimension(600, 600);
+		final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
+		wordCloud.setPadding(2);
+		wordCloud.setBackground(new CircleBackground(300));
+		wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1),
+				new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
+		wordCloud.setFontScalar(new SqrtFontScalar(8, 50));
+		wordCloud.build(wordFrequencies);
+		var output = new ByteArrayOutputStream();
+		wordCloud.writeToStreamAsPNG(response.getOutputStream());
+		response.addHeader(HttpHeaders.CONTENT_TYPE, MediaType.IMAGE_PNG.toString());
+		// var headers = new HttpHeaders();
+		// headers.setContentType(MediaType.IMAGE_PNG);
+		// return new ResponseEntity<ByteArrayOutputStream>(output, HttpStatus.OK,
+		// headers);
+
 	}
 
 }
