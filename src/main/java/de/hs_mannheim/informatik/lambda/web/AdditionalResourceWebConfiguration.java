@@ -13,12 +13,12 @@ public class AdditionalResourceWebConfiguration implements WebMvcConfigurer {
 
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-		File path = new File(LambdaController.CLOUD_PATH);
+		// File path = new File(LambdaController.CLOUD_PATH);
 		
-		if (!path.exists())
-			path.mkdir();
+		// if (!path.exists())
+		// 	path.mkdir();
 			
-		registry.addResourceHandler("/" + LambdaController.CLOUD_PATH + "**").addResourceLocations("file:" + LambdaController.CLOUD_PATH);
+		// registry.addResourceHandler("/" + LambdaController.CLOUD_PATH + "**").addResourceLocations("file:" + LambdaController.CLOUD_PATH);
 	}
 	
 }
