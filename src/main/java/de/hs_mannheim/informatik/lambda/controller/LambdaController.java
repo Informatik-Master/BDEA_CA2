@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
@@ -143,6 +145,7 @@ public class LambdaController {
 						token -> new Tuple2<>(token, 1))
 				.reduceByKey((x, y) -> x + y)
 				.collect();// normalizer
+		// TF-IDF
 
 		// TODO: WordFrequency is not serializable
 		var wordFrequencies = wordFrequenciesTup.stream().map(t -> new WordFrequency(t._1, t._2))
@@ -166,4 +169,75 @@ public class LambdaController {
 
 	}
 
+	@GetMapping("/all-image")
+	@ResponseBody
+	public void allImage(HttpServletResponse response) throws IOException {
+
+		var wordFrequenciesTup = sparkSession.read()
+				.textFile("./Die-Verwandlung.txt", "./Faust.txt", "./Kabale-und-Liebe.txt",
+						"./Unterm-Rad.txt")
+				.javaRDD().flatMap(
+						s -> Arrays.asList(s.split("\\W+")).iterator())
+				.map(String::trim)
+				.filter(v -> v.length() > 3)
+				.map(String::toUpperCase)
+				.mapToPair(
+						token -> new Tuple2<>(token, 1))
+				.reduceByKey((x, y) -> x + y)
+				.collect();// normalizer
+		// TF-IDF
+
+		// TODO: WordFrequency is not serializable
+		var wordFrequencies = wordFrequenciesTup.stream().map(t -> new WordFrequency(t._1, t._2))
+				.collect(Collectors.toList());
+
+		final Dimension dimension = new Dimension(600, 600);
+		final WordCloud wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
+		wordCloud.setPadding(2);
+		wordCloud.setBackground(new CircleBackground(300));
+		wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1),
+				new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
+		wordCloud.setFontScalar(new SqrtFontScalar(8, 50));
+		wordCloud.build(wordFrequencies);
+		var output = new ByteArrayOutputStream();
+		wordCloud.writeToStreamAsPNG(response.getOutputStream());
+		response.addHeader(HttpHeaders.CONTENT_TYPE, MediaType.IMAGE_PNG.toString());
+
+	}
+
+	@GetMapping("/df")	
+	@ResponseBody
+	public String calculateDocumentFrequence() throws IOException {
+		var filePaths = new String[] { "./Die-Verwandlung.txt", "./Faust.txt", "./Kabale-und-Liebe.txt",
+				"./Unterm-Rad.txt" };
+
+		// get count of words for each document
+
+		var javaSparkContext = new JavaSparkContext(sparkSession.sparkContext());
+		var count = javaSparkContext
+				.wholeTextFiles("./files")
+				
+				.flatMap((FlatMapFunction<Tuple2<String, String>, Tuple2<String, String>>) file -> Arrays
+						.asList(file._2.split("\\W+")).stream().map(v -> new Tuple2<String, String>(file._1, v)) //TODO: vlt direkt hier, weil die dokumente ja skalieren
+						.iterator())
+				.map(v -> new Tuple2<String, String>(v._1, v._2.trim()))
+				.filter(v -> v._2.length() > 3)
+				.map(v -> new Tuple2<String, String>(v._1, v._2))
+				.distinct()
+				.groupBy(f -> f._2)
+				.countByKey();
+		for (var entry : count.entrySet()) {
+			if (entry.getValue() > 1) {
+				System.out.println(entry.getKey() + " " + entry.getValue());
+			}
+		}
+		
+
+		// if this never ran, DF = 1
+
+		// Calculate how many documents contain a word and store it in the database
+
+		// recalculate all Tag CLouds, and a tag cloud of all documents
+		return "ok";
+	}
 }
