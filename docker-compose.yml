@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pwd
-      POSTGRES_DB: docs
+      POSTGRES_DB: ca
     ports:
       - 5432:5432
   pgadmin:

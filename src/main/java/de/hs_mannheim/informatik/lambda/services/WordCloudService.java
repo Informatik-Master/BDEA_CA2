@@ -12,7 +12,6 @@ import com.kennycason.kumo.bg.CircleBackground;
 import com.kennycason.kumo.font.scale.SqrtFontScalar;
 import com.kennycason.kumo.palette.ColorPalette;
 
-import de.hs_mannheim.informatik.lambda.entities.Document;
 import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
 
 import com.kennycason.kumo.WordCloud;

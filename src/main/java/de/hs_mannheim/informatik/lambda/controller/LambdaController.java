@@ -1,51 +1,71 @@
 package de.hs_mannheim.informatik.lambda.controller;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+import java.util.UUID;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.spark.api.java.JavaSparkContext;
-import org.apache.spark.api.java.function.FlatMapFunction;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Encoders;
-import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.kennycason.kumo.CollisionMode;
-import com.kennycason.kumo.WordCloud;
-import com.kennycason.kumo.WordFrequency;
-import com.kennycason.kumo.bg.CircleBackground;
-import com.kennycason.kumo.font.scale.SqrtFontScalar;
-import com.kennycason.kumo.nlp.FrequencyAnalyzer;
-import com.kennycason.kumo.palette.ColorPalette;
+import de.hs_mannheim.informatik.lambda.entities.Document;
+import de.hs_mannheim.informatik.lambda.entities.Document.DocumentType;
+import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
+import de.hs_mannheim.informatik.lambda.services.DocumentFrequencyService;
+import de.hs_mannheim.informatik.lambda.services.FSService;
+import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 
-import scala.Tuple2;
-
-@Controller
+@RestController()
+@RequestMapping("lambda")
 public class LambdaController {
 
+    @Autowired
+    DocumentRepository documentRepository;
+
+    @Autowired
+    SparkSession sparkSession;
+
+    @Autowired
+    WordCloudService wordCloudService;
+
+    @Autowired
+    DocumentFrequencyService documentFrequencyService;
+
+    @Autowired
+    FSService fsService;
+
+    @PostMapping("/upload")
+    public long uploadAndCreateTermImage(@RequestParam MultipartFile uploadMultipart) throws IOException {
+        var fullStorageLocationOfSourceFile = fsService.getSourceDirectory().resolve(UUID.randomUUID().toString());
+        uploadMultipart.transferTo(fullStorageLocationOfSourceFile);
+        var wordCloud = wordCloudService.generateWordCloud(fullStorageLocationOfSourceFile.toString());
+
+
+        var source = new Document();
+        source.setFilename(uploadMultipart.getOriginalFilename());
+        source.setContentType(uploadMultipart.getContentType());
+        source.setWarehouseFilename(fullStorageLocationOfSourceFile.toString());
+        source.setDocumentType(DocumentType.SOURCE);
+        var sourceDoc = documentRepository.save(source);
+
+
+        var targetFileName = UUID.randomUUID().toString() + ".PNG";
+        var fullStorageLocationOfTargetFile = fsService.getTargetDirectory()
+                .resolve(targetFileName); // The fileending is important as it is used by the
+                                                                 // libary to determine the file format
+        wordCloud.writeToFile(fullStorageLocationOfTargetFile.toString());
+
+        var document = new Document();
+        document.setFilename(targetFileName);
+        document.setContentType("image/png");
+        document.setWarehouseFilename(fullStorageLocationOfTargetFile.toString());
+        document.setDocumentType(DocumentType.TARGET);
+        document.setSource(sourceDoc);
+        documentRepository.save(document);
+
+        return sourceDoc.getId();
+    }
 }
