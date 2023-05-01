@@ -9,6 +9,7 @@ import java.util.concurrent.Executors;
 
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +23,7 @@ import de.hs_mannheim.informatik.lambda.services.DocumentFrequencyService;
 import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 import scala.Tuple2;
 
+@CrossOrigin(origins = { "http://localhost:3000"})
 @RestController()
 @RequestMapping("f")
 public class FController {
