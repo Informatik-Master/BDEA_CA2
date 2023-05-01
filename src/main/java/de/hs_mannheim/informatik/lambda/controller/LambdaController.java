@@ -19,7 +19,7 @@ import de.hs_mannheim.informatik.lambda.services.FSService;
 import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 
 @RestController()
-@RequestMapping("lambda")
+@RequestMapping("api/lambda")
 public class LambdaController {
 
     @Autowired

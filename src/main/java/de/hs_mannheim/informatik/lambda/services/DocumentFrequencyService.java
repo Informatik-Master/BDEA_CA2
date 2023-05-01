@@ -20,6 +20,7 @@ public class DocumentFrequencyService {
     private SparkSession sparkSession;
 
     public List<Tuple2<String, Long>> generateDocumentFrequency(final String path) {
+        //TODO: prevent empty
         var cntx = new JavaSparkContext(sparkSession.sparkContext());
         var r = cntx
                 .wholeTextFiles(path)

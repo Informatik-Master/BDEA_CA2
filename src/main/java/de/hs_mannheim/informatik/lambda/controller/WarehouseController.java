@@ -20,7 +20,7 @@ import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
 import de.hs_mannheim.informatik.lambda.respository.GlobalWordFrequencyRepository;
 
 @RestController()
-@RequestMapping("warehouse")
+@RequestMapping("api/warehouse")
 public class WarehouseController {
 
     @Autowired
