@@ -21,7 +21,7 @@ import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 
 @CrossOrigin(origins = { "http://localhost:3000"})
 @RestController()
-@RequestMapping("lambda")
+@RequestMapping("api/lambda")
 public class LambdaController {
 
     @Autowired

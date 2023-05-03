@@ -22,7 +22,7 @@ import de.hs_mannheim.informatik.lambda.respository.GlobalWordFrequencyRepositor
 
 @CrossOrigin(origins = { "http://localhost:3000"})
 @RestController()
-@RequestMapping("warehouse")
+@RequestMapping("api/warehouse")
 public class WarehouseController {
 
     @Autowired

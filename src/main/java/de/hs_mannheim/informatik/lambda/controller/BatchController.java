@@ -1,6 +1,5 @@
 package de.hs_mannheim.informatik.lambda.controller;
 
-import java.util.List;
 import java.util.UUID;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -21,7 +20,7 @@ import de.hs_mannheim.informatik.lambda.services.FSService;
 import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 
 @RestController()
-@RequestMapping("batch")
+@RequestMapping("api/batch")
 public class BatchController {
 
   
