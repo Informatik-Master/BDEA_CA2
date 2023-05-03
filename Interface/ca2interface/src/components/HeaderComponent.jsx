@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import HeaderTagCloudComponent from './HeaderTagCloudComponent';
 
 class HeaderComponent extends Component {
     render() {
@@ -12,10 +13,11 @@ class HeaderComponent extends Component {
                             <Link className='nav-link' to='/upload'>Get Tag Cloud</Link>
                         </li>
                         <li className='nav-item'>
-                            <Link className='nav-link active' to='/tag-clouds'>Get Documentation Frequency</Link>
+                            <Link className='nav-link' to='/tag-clouds'>Get Document Frequency</Link>
                         </li>
                     </ul>
                 </nav>
+                <HeaderTagCloudComponent />
             </div>
         );
     }

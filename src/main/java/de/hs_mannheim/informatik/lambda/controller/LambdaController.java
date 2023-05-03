@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import de.hs_mannheim.informatik.lambda.entities.Document;
 import de.hs_mannheim.informatik.lambda.entities.Document.DocumentType;
@@ -18,6 +19,7 @@ import de.hs_mannheim.informatik.lambda.services.DocumentFrequencyService;
 import de.hs_mannheim.informatik.lambda.services.FSService;
 import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 
+@CrossOrigin(origins = { "http://localhost:3000"})
 @RestController()
 @RequestMapping("lambda")
 public class LambdaController {

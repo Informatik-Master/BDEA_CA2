@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Buffer } from "buffer";
 import FileService from '../api/services';
 
 function TagCloudComponent() {
@@ -6,27 +7,31 @@ function TagCloudComponent() {
     const [data, setData] = useState([]);
 
     useEffect(() => {  
-        getTagCloud();  //function is loaded by first render
-      }, []);
-  
-    const getTagCloud = async () => {
-  
-      try
-      {
-        FileService.getTagCloud().then((response) => {
-        setData(response.data); 
-        console.log(response.data);  
-        });
-      }
-      catch(err)
-      {
-        console.log(err);
-      }
-    };      
-  
+      const getTagCloud = async () => {
+        try
+        {
+          FileService.getTagCloud().then((response) => {
+            let blob = new Blob([response.data], { type: response.headers['content-type'] })
+            let url = URL.createObjectURL(blob)
+            setData(url);
+          //const buffer = Buffer.from(response.data, 'binary').toString('base64');
+          //setData('data:image.png;base64,${buffer}');
+          });
+        }
+        catch(err)
+        {
+          console.log(err);
+        }
+      };
+      getTagCloud();
+    }, []);
+
+    if (!data) {
+      return <div>Waiting for data</div>;
+    }
     return (
       <div>
-        <img src={data} alt="Tag Cloud" />
+        <img src={data + '.PNG'} alt="Tag Cloud" />
       </div>
     );
 }

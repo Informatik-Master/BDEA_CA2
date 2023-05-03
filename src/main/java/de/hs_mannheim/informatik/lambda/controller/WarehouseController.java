@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import de.hs_mannheim.informatik.lambda.entities.Document;
 import de.hs_mannheim.informatik.lambda.entities.GlobalWordFrequency;
 import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
 import de.hs_mannheim.informatik.lambda.respository.GlobalWordFrequencyRepository;
 
+@CrossOrigin(origins = { "http://localhost:3000"})
 @RestController()
 @RequestMapping("warehouse")
 public class WarehouseController {
