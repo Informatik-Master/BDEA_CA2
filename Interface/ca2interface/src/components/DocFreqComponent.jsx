@@ -6,11 +6,11 @@ function DocumentFrequency() {
   const [docFreq, setDocFreq] = useState(0); // docFreq: output value
 
   const handleInputChange = (event) => {  
-    setWord(event.target.value.toLowerCase());
+    setWord(event.target.value.toUpperCase());
   };
 
   const handleButtonClick = async () => { 
-    FileService.getDocFrequency().then((response) => {
+    FileService.getDocFrequency(word).then((response) => {
       setDocFreq(response.data.frequency);
       setData(url);
       }); 

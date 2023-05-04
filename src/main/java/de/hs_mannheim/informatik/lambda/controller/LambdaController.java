@@ -40,7 +40,7 @@ public class LambdaController {
     FSService fsService;
 
     @PostMapping("/upload")
-    public long uploadAndCreateTermImage(@RequestParam MultipartFile uploadMultipart) throws IOException {
+    public Document uploadAndCreateTermImage(@RequestParam MultipartFile uploadMultipart) throws IOException {
         var fullStorageLocationOfSourceFile = fsService.getSourceDirectory().resolve(UUID.randomUUID().toString());
         uploadMultipart.transferTo(fullStorageLocationOfSourceFile);
         var wordCloud = wordCloudService.generateWordCloud(fullStorageLocationOfSourceFile.toString());
@@ -68,6 +68,6 @@ public class LambdaController {
         document.setSource(sourceDoc);
         documentRepository.save(document);
 
-        return sourceDoc.getId();
+        return sourceDoc;
     }
 }

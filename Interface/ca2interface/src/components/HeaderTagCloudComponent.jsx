@@ -8,7 +8,6 @@ class HeaderTagCloudComponent extends Component {
         return (
             <div>
                 <FilesUploadComponent/>
-                <TagCloudComponent/>
             </div>
         );
     }

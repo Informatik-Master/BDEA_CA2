@@ -64,4 +64,30 @@ public class WarehouseController {
         response.addHeader(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString());
     }
 
+    @GetMapping("/documents/{id}/wordcloud")
+    public void wordcloud(HttpServletResponse response, @PathVariable Long id) throws IOException {
+        var document = documentRepository.findById(id);
+        if (document.isEmpty()) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+
+        var target = documentRepository.findOneBySource(document.get());
+        if (target.isEmpty()) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+        var fileStream = new FileInputStream(target.get().getWarehouseFilename());
+        fileStream.transferTo(response.getOutputStream());
+        response.addHeader(HttpHeaders.CONTENT_TYPE, document.get().getContentType());
+
+        var contentDisposition = ContentDisposition.builder("inline")
+                .filename(document.get().getFilename())
+                .build();
+
+        response.addHeader(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString());
+    }
+
 }

@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import FileService from '../api/services';
+import TagCloudComponent from './TagCloudComponent';
 
 const FilesUploadComponent = () => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [fileList, setFileList] = useState([]);
 
     const handleFileChange = (event) => {
+        console.log(event.target.files[0]);
         setSelectedFile(event.target.files[0]);
     };
     
     const handleFileUpload = () => {
         const formData = new FormData();
         
-        formData.append("file", selectedFile);
+        formData.append("uploadMultipart", selectedFile);
         FileService.uploadFile(formData).then((response) => {
-            setFileList([...fileList, response.data.fileName]);
+            setFileList([...fileList, response.data]);
             console.log(response.data);
         }).catch(error => {
             console.log(error);
@@ -34,9 +36,13 @@ const FilesUploadComponent = () => {
                     </div>
                     <div className="card">
                         <div className="card-header">List of uploaded files</div>
-                            <ul>
-                                {fileList.map((fileName) => (
-                                    <li key={fileName}>{fileName}</li>
+                            <ul style={{listStyle: 'none'}}>
+                                {fileList.map((doc, i) => (
+                                    <li key={doc.id}>{doc.filename}
+                                    
+                                        <TagCloudComponent source={doc.id}/>
+                                    
+                                    </li>
                                 ))}
                             </ul>
                         </div>

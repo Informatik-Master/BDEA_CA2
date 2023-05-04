@@ -2,31 +2,11 @@ import api from './axiosConfig';
 
 class FileService {
 
-  uploadFile = (file) =>{
-    return api.post('/lambda/upload', file);	
-  }
+  uploadFile = (file) => api.post(`/lambda/upload`, file);
 
-  getTagCloud = async () =>{
-      try
-      {
-        const response = await api.get('/warehouse/documents', {responseType: 'arraybuffer'});
-        return response;
-      } 
-      catch(err)
-      {
-        console.log(err);
-      }
-    }
+  getTagCloud = (docId) => api.get(`/warehouse/documents/${docId}/wordcloud`, {responseType: 'blob'});
 
-  getDocFrequency = async () => {
-    try {
-      const response = await api.get('/warehouse/documents/${word}');
-    return response;
-    }
-    catch(err){
-      console.log(err);
-    }
-  }
+  getDocFrequency = (word) => api.get(`/warehouse/globalWordFrequency/${word}`);
 
    /*createWordCloudFromAllFiles = () =>{
       return api.post('/batch/wordcloud');
