@@ -3253,3 +3253,567 @@ failed to get console mode for stdout: The handle is invalid.
 [36mapi         |[0m 2023-05-04 09:51:24.312  INFO 1 --- [ool-26-thread-1] o.a.spark.storage.BlockManagerMaster     : BlockManagerMaster stopped
 [36mapi         |[0m 2023-05-04 09:51:24.321  INFO 1 --- [er-event-loop-1] rdinator$OutputCommitCoordinatorEndpoint : OutputCommitCoordinator stopped!
 [36mapi         |[0m 2023-05-04 09:51:24.328  INFO 1 --- [ool-26-thread-1] org.apache.spark.SparkContext            : Successfully stopped SparkContext
+[36mapi         |[0m 2023-05-04 10:35:29.919  INFO 1 --- [io-8080-exec-10] o.a.s.s.e.datasources.InMemoryFileIndex  : It took 93 ms to list leaf files for 1 paths.
+[36mapi         |[0m 2023-05-04 10:35:30.872  INFO 1 --- [io-8080-exec-10] o.a.s.s.e.d.FileSourceStrategy           : Pushed Filters: 
+[36mapi         |[0m 2023-05-04 10:35:30.874  INFO 1 --- [io-8080-exec-10] o.a.s.s.e.d.FileSourceStrategy           : Post-Scan Filters: 
+[36mapi         |[0m 2023-05-04 10:35:31.095 ERROR 1 --- [io-8080-exec-10] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          ] with root cause
+[36mapi         |[0m 
+[36mapi         |[0m java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          
+[36mapi         |[0m 	at org.apache.spark.SparkContext.assertNotStopped(SparkContext.scala:120) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcastInternal(SparkContext.scala:1545) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcast(SparkContext.scala:1530) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.text.TextFileFormat.buildReader(TextFileFormat.scala:106) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues(FileFormat.scala:138) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues$(FileFormat.scala:129) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.TextBasedFileFormat.buildReaderWithPartitionValues(FileFormat.scala:280) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD$lzycompute(DataSourceScanExec.scala:548) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD(DataSourceScanExec.scala:537) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.doExecute(DataSourceScanExec.scala:576) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.DeserializeToObjectExec.doExecute(objects.scala:92) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd$lzycompute(QueryExecution.scala:190) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd(QueryExecution.scala:189) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd$lzycompute(Dataset.scala:3694) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd(Dataset.scala:3692) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.toJavaRDD(Dataset.scala:3704) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.javaRDD(Dataset.scala:3711) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.services.WordCloudService.generateWordCloud(WordCloudService.java:36) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.controller.LambdaController.uploadAndCreateTermImage(LambdaController.java:46) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:528) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:596) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+[36mapi         |[0m 
+[36mapi         |[0m 2023-05-04 10:35:47.822  WARN 1 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.multipart.support.MissingServletRequestPartException: Required request part 'uploadMultipart' is not present]
+[36mapi         |[0m 2023-05-04 10:35:54.119  INFO 1 --- [nio-8080-exec-4] o.a.s.s.e.datasources.InMemoryFileIndex  : It took 10 ms to list leaf files for 1 paths.
+[36mapi         |[0m 2023-05-04 10:35:54.205  INFO 1 --- [nio-8080-exec-4] o.a.s.s.e.d.FileSourceStrategy           : Pushed Filters: 
+[36mapi         |[0m 2023-05-04 10:35:54.206  INFO 1 --- [nio-8080-exec-4] o.a.s.s.e.d.FileSourceStrategy           : Post-Scan Filters: 
+[36mapi         |[0m 2023-05-04 10:35:54.223 ERROR 1 --- [nio-8080-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          ] with root cause
+[36mapi         |[0m 
+[36mapi         |[0m java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          
+[36mapi         |[0m 	at org.apache.spark.SparkContext.assertNotStopped(SparkContext.scala:120) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcastInternal(SparkContext.scala:1545) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcast(SparkContext.scala:1530) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.text.TextFileFormat.buildReader(TextFileFormat.scala:106) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues(FileFormat.scala:138) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues$(FileFormat.scala:129) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.TextBasedFileFormat.buildReaderWithPartitionValues(FileFormat.scala:280) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD$lzycompute(DataSourceScanExec.scala:548) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD(DataSourceScanExec.scala:537) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.doExecute(DataSourceScanExec.scala:576) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.DeserializeToObjectExec.doExecute(objects.scala:92) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd$lzycompute(QueryExecution.scala:190) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd(QueryExecution.scala:189) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd$lzycompute(Dataset.scala:3694) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd(Dataset.scala:3692) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.toJavaRDD(Dataset.scala:3704) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.javaRDD(Dataset.scala:3711) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.services.WordCloudService.generateWordCloud(WordCloudService.java:36) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.controller.LambdaController.uploadAndCreateTermImage(LambdaController.java:46) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:528) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:596) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+[36mapi         |[0m 
+[36mapi         |[0m 2023-05-04 10:36:18.720  INFO 1 --- [nio-8080-exec-2] o.a.s.s.e.datasources.InMemoryFileIndex  : It took 5 ms to list leaf files for 1 paths.
+[36mapi         |[0m 2023-05-04 10:36:18.819  INFO 1 --- [nio-8080-exec-2] o.a.s.s.e.d.FileSourceStrategy           : Pushed Filters: 
+[36mapi         |[0m 2023-05-04 10:36:18.819  INFO 1 --- [nio-8080-exec-2] o.a.s.s.e.d.FileSourceStrategy           : Post-Scan Filters: 
+[36mapi         |[0m 2023-05-04 10:36:18.833 ERROR 1 --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          ] with root cause
+[36mapi         |[0m 
+[36mapi         |[0m java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          
+[36mapi         |[0m 	at org.apache.spark.SparkContext.assertNotStopped(SparkContext.scala:120) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcastInternal(SparkContext.scala:1545) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcast(SparkContext.scala:1530) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.text.TextFileFormat.buildReader(TextFileFormat.scala:106) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues(FileFormat.scala:138) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues$(FileFormat.scala:129) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.TextBasedFileFormat.buildReaderWithPartitionValues(FileFormat.scala:280) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD$lzycompute(DataSourceScanExec.scala:548) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD(DataSourceScanExec.scala:537) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.doExecute(DataSourceScanExec.scala:576) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.DeserializeToObjectExec.doExecute(objects.scala:92) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd$lzycompute(QueryExecution.scala:190) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd(QueryExecution.scala:189) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd$lzycompute(Dataset.scala:3694) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd(Dataset.scala:3692) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.toJavaRDD(Dataset.scala:3704) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.javaRDD(Dataset.scala:3711) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.services.WordCloudService.generateWordCloud(WordCloudService.java:36) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.controller.LambdaController.uploadAndCreateTermImage(LambdaController.java:46) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:528) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:596) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+[36mapi         |[0m 
+[36mapi         |[0m 2023-05-04 10:36:33.136  INFO 1 --- [nio-8080-exec-5] o.a.s.s.e.datasources.InMemoryFileIndex  : It took 4 ms to list leaf files for 1 paths.
+[36mapi         |[0m 2023-05-04 10:36:33.186  INFO 1 --- [nio-8080-exec-5] o.a.s.s.e.d.FileSourceStrategy           : Pushed Filters: 
+[36mapi         |[0m 2023-05-04 10:36:33.186  INFO 1 --- [nio-8080-exec-5] o.a.s.s.e.d.FileSourceStrategy           : Post-Scan Filters: 
+[36mapi         |[0m 2023-05-04 10:36:33.196 ERROR 1 --- [nio-8080-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          ] with root cause
+[36mapi         |[0m 
+[36mapi         |[0m java.lang.IllegalStateException: Cannot call methods on a stopped SparkContext.
+[36mapi         |[0m This stopped SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m org.apache.spark.sql.SparkSession$Builder.getOrCreate(SparkSession.scala:1020)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig.sparkSession(ApplicationConfig.java:18)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.CGLIB$sparkSession$0(<generated>)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b$$FastClassBySpringCGLIB$$3c009ea0.invoke(<generated>)
+[36mapi         |[0m org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:244)
+[36mapi         |[0m org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:331)
+[36mapi         |[0m de.hs_mannheim.informatik.lambda.ApplicationConfig$$EnhancerBySpringCGLIB$$e4a6732b.sparkSession(<generated>)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[36mapi         |[0m java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+[36mapi         |[0m java.base/java.lang.reflect.Method.invoke(Unknown Source)
+[36mapi         |[0m org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653)
+[36mapi         |[0m org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+[36mapi         |[0m org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+[36mapi         |[0m org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+[36mapi         |[0m 
+[36mapi         |[0m The currently active SparkContext was created at:
+[36mapi         |[0m 
+[36mapi         |[0m (No active SparkContext.)
+[36mapi         |[0m          
+[36mapi         |[0m 	at org.apache.spark.SparkContext.assertNotStopped(SparkContext.scala:120) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcastInternal(SparkContext.scala:1545) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.SparkContext.broadcast(SparkContext.scala:1530) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.text.TextFileFormat.buildReader(TextFileFormat.scala:106) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues(FileFormat.scala:138) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.FileFormat.buildReaderWithPartitionValues$(FileFormat.scala:129) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.datasources.TextBasedFileFormat.buildReaderWithPartitionValues(FileFormat.scala:280) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD$lzycompute(DataSourceScanExec.scala:548) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.inputRDD(DataSourceScanExec.scala:537) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.FileSourceScanExec.doExecute(DataSourceScanExec.scala:576) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.DeserializeToObjectExec.doExecute(objects.scala:92) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$execute$1(SparkPlan.scala:195) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.$anonfun$executeQuery$1(SparkPlan.scala:246) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.rdd.RDDOperationScope$.withScope(RDDOperationScope.scala:151) ~[spark-core_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.executeQuery(SparkPlan.scala:243) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.SparkPlan.execute(SparkPlan.scala:191) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd$lzycompute(QueryExecution.scala:190) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.execution.QueryExecution.toRdd(QueryExecution.scala:189) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd$lzycompute(Dataset.scala:3694) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.rdd(Dataset.scala:3692) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.toJavaRDD(Dataset.scala:3704) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at org.apache.spark.sql.Dataset.javaRDD(Dataset.scala:3711) ~[spark-sql_2.13-3.4.0.jar!/:3.4.0]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.services.WordCloudService.generateWordCloud(WordCloudService.java:36) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at de.hs_mannheim.informatik.lambda.controller.LambdaController.uploadAndCreateTermImage(LambdaController.java:46) ~[classes!/:0.0.1-SNAPSHOT]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1072) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:965) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:528) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:596) ~[tomcat-embed-core-9.0.73.jar!/:4.0.4]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.26.jar!/:5.3.26]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1791) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.73.jar!/:na]
+[36mapi         |[0m 	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+[36mapi         |[0m 
+[36mapi         |[0m 2023-05-04 10:43:01.593  INFO 1 --- [ool-26-thread-4] o.a.s.s.e.datasources.InMemoryFileIndex  : It took 15 ms to list leaf files for 1 paths.
+[36mapi         |[0m 2023-05-04 10:43:01.654  INFO 1 --- [ool-26-thread-4] o.a.s.s.e.d.FileSourceStrategy           : Pushed Filters: 
+[36mapi         |[0m 2023-05-04 10:43:01.655  INFO 1 --- [ool-26-thread-4] o.a.s.s.e.d.FileSourceStrategy           : Post-Scan Filters: 
