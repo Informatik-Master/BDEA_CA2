@@ -1,0 +1,5 @@
+- Spring Boot muss nicht unbedingt genutzt werden
+- Wort über alle Dokumente zählen
+- lambda weil: tag cloud im speed layer, nach jeder Text-Datei Dokumentenfrequenz erhöhen
+	2 Probleme: Word count in Doc, neues Document kommt später rein
+	speed layer job: word count im aktuellen Dokument

@@ -3,17 +3,11 @@ import FileService from '../api/services';
 
 function TagCloudComponent(props) {
     const [data, setData] = useState([]);
-  console.log(props.source);
-    useEffect(() => {  
-      console.log(props.source);
+    useEffect(() => {
       if (!props.source) return;
           FileService.getTagCloud(props.source).then((response) => {
-            console.log(response.data);
-            // let blob = new Blob([response.data])
             let url = URL.createObjectURL(response.data)
             setData(url);
-          //const buffer = Buffer.from(response.data, 'binary').toString('base64');
-          //setData('data:image.png;base64,${buffer}');
           });
     }, []);
 

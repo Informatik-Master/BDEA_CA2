@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import FileService from '../api/services';
+import DocFreqBatchComponent from './DocFreqBatchComponent';
 
-function DocumentFrequency() {
+function DocFreqComponent() {
   const [word, setWord] = useState(''); // word: input value
   const [docFreq, setDocFreq] = useState(0); // docFreq: output value
 
@@ -12,12 +13,12 @@ function DocumentFrequency() {
   const handleButtonClick = async () => { 
     FileService.getDocFrequency(word).then((response) => {
       setDocFreq(response.data.frequency);
-      setData(url);
       }); 
     };
 
   return (
     <div>
+      <DocFreqBatchComponent />
       <input type="text" value={word} onChange={handleInputChange} />
       <button onClick={handleButtonClick}>Get Document Frequency</button>
       {docFreq > 0 && (
@@ -26,7 +27,8 @@ function DocumentFrequency() {
         </p>
       )}
     </div>
+    
   );
 }
 
-export default DocumentFrequency;
+export default DocFreqComponent;

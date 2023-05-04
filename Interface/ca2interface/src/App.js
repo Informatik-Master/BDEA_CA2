@@ -1,8 +1,9 @@
 import './App.css';
 import HeaderComponent from './components/HeaderComponent';
 import { Routes, Route} from 'react-router-dom';
-import HeaderTagCloudComponent from './components/HeaderTagCloudComponent';
 import DocFreqComponent from './components/DocFreqComponent';
+import FilesUploadComponent from './components/FilesUploadComponent';
+import GlobalTagCLoudComponent from './components/GlobalTagCloudComponent';
 
 
 function App() {  
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path="/" element={<HeaderComponent />}/>
-        <Route path="/upload" element={<HeaderTagCloudComponent />}/>
+        <Route path="/upload" element={<GlobalTagCLoudComponent />}/>
         <Route path="/tag-clouds" element={<DocFreqComponent />}/>
       </Routes>
     </div>
