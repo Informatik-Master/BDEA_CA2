@@ -11,9 +11,6 @@ function TagCloudComponent(props) {
           });
     }, []);
 
-    if (!data) {
-      return <div>Waiting for data</div>;
-    }
     return (
       <div>
         <img src={data} alt="Tag Cloud" />

@@ -36,6 +36,8 @@ public class WarehouseController {
         return documentRepository.findAll();
     }
 
+
+
     @GetMapping("/globalWordFrequency")
     public List<GlobalWordFrequency> globalWordFrequency() {
         return globalWordFrequencyRepository.findAll();
@@ -54,6 +56,25 @@ public class WarehouseController {
             return;
         }
         var fileStream = new FileInputStream(document.get().getWarehouseFilename());
+        fileStream.transferTo(response.getOutputStream());
+        response.addHeader(HttpHeaders.CONTENT_TYPE, document.get().getContentType());
+
+        var contentDisposition = ContentDisposition.builder("inline")
+                .filename(document.get().getFilename())
+                .build();
+
+        response.addHeader(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString());
+    }
+
+    @GetMapping("/documents/overall_target")
+    public void overallTarget(HttpServletResponse response) throws IOException {
+        var document = documentRepository.findOneByDocumentType(Document.DocumentType.OVERALL_TARGET);
+        if (document.isEmpty()) {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+         var fileStream = new FileInputStream(document.get().getWarehouseFilename());
         fileStream.transferTo(response.getOutputStream());
         response.addHeader(HttpHeaders.CONTENT_TYPE, document.get().getContentType());
 

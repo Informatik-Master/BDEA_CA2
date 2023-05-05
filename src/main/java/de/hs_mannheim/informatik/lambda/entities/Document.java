@@ -25,8 +25,8 @@ public class Document {
 
     public enum DocumentType {
         SOURCE,
-         TARGET,
-          OVERALL_TARGET
+        TARGET,
+        OVERALL_TARGET
     }
 
     @Id

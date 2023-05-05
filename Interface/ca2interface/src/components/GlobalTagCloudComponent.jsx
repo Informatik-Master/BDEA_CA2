@@ -15,7 +15,7 @@ function GlobalTagCLoudComponent() {
         <div>
             <h3 className='text-center'>Global Tag Cloud</h3>
             <br></br>
-            <button onClick={handleButtonClick}>Get Global Tag Cloud</button>
+            <button className='btn btn-success btn-sm mt-3' type='submit' onClick={handleButtonClick}>Get Global Tag Cloud</button>
             <div>
                 <img src={data} alt="Tag Cloud" />
             </div>

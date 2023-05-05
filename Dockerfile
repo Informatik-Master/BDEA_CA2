@@ -16,4 +16,3 @@ WORKDIR /app
 COPY --from=build /build/target/*.jar lambda-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","lambda-0.0.1-SNAPSHOT.jar"]
-

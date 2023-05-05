@@ -20,11 +20,9 @@ public class DocumentFrequencyService {
     private SparkSession sparkSession;
 
     public List<Tuple2<String, Long>> generateDocumentFrequency(final String path) {
-        //TODO: prevent empty
-        var cntx = new JavaSparkContext(sparkSession.sparkContext());
-        var r = cntx
-                .wholeTextFiles(path)
 
+        var r = sparkSession.sparkContext().wholeTextFiles(path, 1)
+            	.toJavaRDD()
                 .flatMap((FlatMapFunction<Tuple2<String, String>, Tuple2<String, String>>) file -> Arrays
                         .asList(file._2.split("\\W+")).stream().map(v -> new Tuple2<String, String>(v, file._1))
                         .iterator())
@@ -35,7 +33,6 @@ public class DocumentFrequencyService {
                 .groupBy(f -> f._1)
                 .map(f -> new Tuple2<String, Long>(f._1, StreamSupport.stream(f._2.spliterator(), false).count()))
                 .collect();
-        cntx.close();
         return r;
     }
 }

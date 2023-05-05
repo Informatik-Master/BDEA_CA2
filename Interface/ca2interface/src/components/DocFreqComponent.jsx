@@ -19,15 +19,12 @@ function DocFreqComponent() {
   return (
     <div>
       <DocFreqBatchComponent />
+      <br></br>
       <input type="text" value={word} onChange={handleInputChange} />
-      <button onClick={handleButtonClick}>Get Document Frequency</button>
-      {docFreq > 0 && (
-        <p>
-          The word "{word}" appears in {docFreq} document(s).
-        </p>
-      )}
+      <button onClick={handleButtonClick}>Refresh Document Frequency</button>
+          {docFreq == undefined && <p>The word "{word}" does not appear in any documents.</p>}
+          {docFreq > 0 && <p>The word "{word}" appears in {docFreq} document(s).</p>}
     </div>
-    
   );
 }
 

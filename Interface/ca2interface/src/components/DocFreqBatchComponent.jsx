@@ -11,7 +11,7 @@ function DocFreqBatchComponent() {
   
     return (
       <div>
-        <button onClick={handleButtonClick}>Run Batch for Document Frequency</button>
+        <button className='btn btn-success btn-sm mt-3' type='submit' onClick={handleButtonClick}>Run Batch for Document Frequency</button>
       </div>
     );
   }

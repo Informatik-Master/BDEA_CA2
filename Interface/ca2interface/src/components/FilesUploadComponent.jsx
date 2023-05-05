@@ -25,15 +25,17 @@ const FilesUploadComponent = () => {
     
       return (
         <div className='row'>
-            <div className='card col-md-6 offset-md-3 mt-5'>
+
                 <h3 className='text-center'>Upload File</h3>
                     <div className='card-body'>
                         <div>
                             <label>Select files:</label>
                             <input className='mx-2' type='file' name='file' onChange={handleFileChange} multiple></input>
                         </div>
-                        <button className='btn btn-success btn-sm mt-3' type='submit' onClick={handleFileUpload}>Upload</button>
-                    </div>
+                            <button className='btn btn-success btn-sm mt-3' type='submit' onClick={handleFileUpload}>Upload</button>
+                            <br></br>
+                        </div>
+                    
                 <div className="card">
                     <div className="card-header">List of uploaded files</div>
                     <ul style={{ listStyle: 'none' }}>
@@ -44,7 +46,7 @@ const FilesUploadComponent = () => {
                         ))}
                     </ul>
                 </div>
-            </div>
+
         </div>
         );
     };
