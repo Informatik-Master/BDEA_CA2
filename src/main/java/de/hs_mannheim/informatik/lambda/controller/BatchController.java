@@ -62,7 +62,7 @@ public class BatchController {
             document.setContentType("image/png");
             documentRepository.save(document);
         });
-        var documents = documentRepository.findByDocumentType(DocumentType.SOURCE);
+        var documents = documentRepository.findByDocumentTypeOrderByIdDesc(DocumentType.SOURCE);
         documents.stream().forEach(d -> {
             this.executor.submit(() -> {
                 var targetFileName = UUID.randomUUID().toString() + ".PNG";

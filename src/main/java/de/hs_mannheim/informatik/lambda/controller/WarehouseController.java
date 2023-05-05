@@ -68,7 +68,7 @@ public class WarehouseController {
 
     @GetMapping("/documents/overall_target")
     public void overallTarget(HttpServletResponse response) throws IOException {
-        var document = documentRepository.findOneByDocumentType(Document.DocumentType.OVERALL_TARGET);
+        var document = documentRepository.findFirstByDocumentTypeOrderByIdDesc(Document.DocumentType.OVERALL_TARGET);
         if (document.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
@@ -94,7 +94,7 @@ public class WarehouseController {
         }
 
 
-        var target = documentRepository.findOneBySource(document.get());
+        var target = documentRepository.findFirstBySourceOrderByIdDesc(document.get());
         if (target.isEmpty()) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;

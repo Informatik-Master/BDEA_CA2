@@ -10,7 +10,9 @@ class FileService {
 
   getBatchDocFrequency = () => api.post(`/batch/documentfrequency`);
 
-  createWordCloudFromAllFiles = () => api.post('/batch/wordcloud', {responseType: 'blob'});
+  createWordCloudFromAllFiles = () => api.post('/batch/wordcloud');
+
+  getWordCloudFromAllFiles = () => api.get('/warehouse/documents/overall_target', {responseType: 'blob'});
 }
   
 export default new FileService();
