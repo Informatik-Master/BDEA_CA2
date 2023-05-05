@@ -14,18 +14,18 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import de.hs_mannheim.informatik.lambda.entities.Document;
 import de.hs_mannheim.informatik.lambda.entities.GlobalWordFrequency;
+import de.hs_mannheim.informatik.lambda.entities.Document.DocumentType;
 import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
 import de.hs_mannheim.informatik.lambda.respository.GlobalWordFrequencyRepository;
 import de.hs_mannheim.informatik.lambda.services.DocumentFrequencyService;
 import de.hs_mannheim.informatik.lambda.services.FSService;
 import de.hs_mannheim.informatik.lambda.services.WordCloudService;
 
-@CrossOrigin(origins = { "http://localhost:3000"})
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController()
 @RequestMapping("api/batch")
 public class BatchController {
 
-  
     @Autowired
     DocumentRepository documentRepository;
 
@@ -62,12 +62,33 @@ public class BatchController {
             document.setContentType("image/png");
             documentRepository.save(document);
         });
+        var documents = documentRepository.findByDocumentType(DocumentType.SOURCE);
+        documents.stream().forEach(d -> {
+            this.executor.submit(() -> {
+                var targetFileName = UUID.randomUUID().toString() + ".PNG";
+                var fullStorageLocationOfTargetFile = fsService.getTargetDirectory()
+                        .resolve(targetFileName);
+
+                var wordCloud = wordCloudService.generateWordCloud(d.getWarehouseFilename());
+                wordCloud.writeToFile(fullStorageLocationOfTargetFile.toString());
+
+                var document = new Document();
+                document.setFilename(targetFileName);
+                document.setContentType("image/png");
+                document.setWarehouseFilename(fullStorageLocationOfTargetFile.toString());
+                document.setDocumentType(DocumentType.TARGET);
+                document.setSource(d);
+                documentRepository.save(document);
+            });
+        });
+
     }
 
     @PostMapping("documentfrequency")
     public void batchCreateDokumentFrequence() {
         this.executor.submit(() -> {
-            var frequencies = documentFrequencyService.generateDocumentFrequency(fsService.getSourceDirectory().toString());
+            var frequencies = documentFrequencyService
+                    .generateDocumentFrequency(fsService.getSourceDirectory().toString());
 
             var dbEntires = frequencies.stream().map(tuple -> {
                 var globalWordFrequency = new GlobalWordFrequency();
@@ -75,10 +96,10 @@ public class BatchController {
                 globalWordFrequency.setFrequency(tuple._2());
                 return globalWordFrequency;
             }).collect(Collectors.toList());
-    
+
             globalWordFrequencyRepository.deleteAll();
             globalWordFrequencyRepository.saveAll(dbEntires);
         });
-       
+
     }
 }
