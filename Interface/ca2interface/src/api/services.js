@@ -13,6 +13,8 @@ class FileService {
   createWordCloudFromAllFiles = () => api.post('/batch/wordcloud');
 
   getWordCloudFromAllFiles = () => api.get('/warehouse/documents/overall_target', {responseType: 'blob'});
+
+  getPreviouslyUploadedFiles = () => api.get('/warehouse/documents');
 }
   
 export default new FileService();
