@@ -32,13 +32,20 @@ public class WordCloudService {
         @Autowired
         DocumentRepository documentRepository;
 
+        @Autowired
+        StopwordService stopwordService;
+
         public List<WordFrequency> getTf(final String source) {
+
+                var clonedWords = stopwordService.getStopwords();
+
                 var wordFrequenciesTup = sparkSession.read().textFile(source)
                                 .javaRDD().flatMap(
                                                 s -> Arrays.asList(s.split("\\W+")).iterator())
                                 .map(String::trim)
                                 .filter(v -> v.length() > 3)
                                 .map(String::toUpperCase)
+                                .filter(v -> !clonedWords.contains(v))
                                 .mapToPair(
                                                 token -> new Tuple2<>(token, 1))
                                 .reduceByKey((x, y) -> x + y)

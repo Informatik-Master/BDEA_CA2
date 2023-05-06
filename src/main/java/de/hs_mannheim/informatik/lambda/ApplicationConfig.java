@@ -14,7 +14,7 @@ public class ApplicationConfig {
     public SparkSession sparkSession() {
         return SparkSession
                 .builder()
-                .appName("CA2").master("local[4]")
+                .appName("CA2").master("local[*]")
                 .getOrCreate();
     }
 

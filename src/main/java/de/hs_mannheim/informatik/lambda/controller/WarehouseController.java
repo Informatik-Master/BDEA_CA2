@@ -20,8 +20,9 @@ import de.hs_mannheim.informatik.lambda.entities.Document;
 import de.hs_mannheim.informatik.lambda.entities.GlobalWordFrequency;
 import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
 import de.hs_mannheim.informatik.lambda.respository.GlobalWordFrequencyRepository;
+import de.hs_mannheim.informatik.lambda.respository.TermFrequencyRepository;
 
-@CrossOrigin(origins = { "http://localhost:3000"})
+@CrossOrigin(origins = { "http://localhost:3000" })
 @RestController()
 @RequestMapping("api/warehouse")
 public class WarehouseController {
@@ -32,12 +33,13 @@ public class WarehouseController {
     @Autowired
     GlobalWordFrequencyRepository globalWordFrequencyRepository;
 
+    @Autowired
+    TermFrequencyRepository termFrequencyRepository;
+
     @GetMapping("/documents")
     public List<Document> doc() {
         return documentRepository.findAll();
     }
-
-
 
     @GetMapping("/globalWordFrequency")
     public List<GlobalWordFrequency> globalWordFrequency() {
@@ -75,7 +77,7 @@ public class WarehouseController {
             return;
         }
 
-         var fileStream = new FileInputStream(document.get().getWarehouseFilename());
+        var fileStream = new FileInputStream(document.get().getWarehouseFilename());
         fileStream.transferTo(response.getOutputStream());
         response.addHeader(HttpHeaders.CONTENT_TYPE, document.get().getContentType());
 
@@ -93,7 +95,6 @@ public class WarehouseController {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
-
 
         var target = documentRepository.findFirstBySourceOrderByIdDesc(document.get());
         if (target.isEmpty()) {
@@ -130,7 +131,8 @@ public class WarehouseController {
     }
 
     @GetMapping("/documents/{id}/tfidf/{word}")
-    public Double tfidf(HttpServletResponse response, @PathVariable String id, @PathVariable String word) throws IOException {
+    public Double tfidf(HttpServletResponse response, @PathVariable String id, @PathVariable String word)
+            throws IOException {
         var allDocuments = documentRepository.findByDocumentTypeOrderByIdDesc(Document.DocumentType.SOURCE);
         if (allDocuments.isEmpty()) {
             return 1D;
@@ -143,10 +145,16 @@ public class WarehouseController {
         }
 
         var idf = Math.log(allDocuments.size() / (double) amountOfDocs);
-        
+
+        var document = documentRepository.findById(Long.parseLong(id));
         var tf = 1D;
+        if (!document.isEmpty()) {
+            var f = termFrequencyRepository.findOneByWordAndSource(word, document.get());
+            if (!f.isEmpty()) {
+                tf = f.get().getFrequency();
+            }
+        }
         return tf * idf;
     }
-
 
 }
