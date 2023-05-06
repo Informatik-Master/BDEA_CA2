@@ -3,6 +3,7 @@ package de.hs_mannheim.informatik.lambda.controller;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -44,7 +45,7 @@ public class WarehouseController {
     }
 
     @GetMapping("/globalWordFrequency/{word}")
-    public GlobalWordFrequency globalWordFrequency(@PathVariable String word) {
+    public Optional<GlobalWordFrequency> globalWordFrequency(@PathVariable String word) {
         return globalWordFrequencyRepository.findOneByWord(word);
     }
 
@@ -110,5 +111,42 @@ public class WarehouseController {
 
         response.addHeader(HttpHeaders.CONTENT_DISPOSITION, contentDisposition.toString());
     }
+
+    @GetMapping("/idf/{word}")
+    public Double idf(HttpServletResponse response, @PathVariable String word) throws IOException {
+        var document = documentRepository.findByDocumentTypeOrderByIdDesc(Document.DocumentType.SOURCE);
+        if (document.isEmpty()) {
+            return 1D;
+        }
+
+        var dbEntry = globalWordFrequencyRepository.findOneByWord(word);
+        var amountOfDocs = 0L;
+        if (!dbEntry.isEmpty()) {
+            amountOfDocs = dbEntry.get().getFrequency();
+        }
+
+        var idf = Math.log(document.size() / (double) amountOfDocs);
+        return idf;
+    }
+
+    @GetMapping("/documents/{id}/tfidf/{word}")
+    public Double tfidf(HttpServletResponse response, @PathVariable String id, @PathVariable String word) throws IOException {
+        var allDocuments = documentRepository.findByDocumentTypeOrderByIdDesc(Document.DocumentType.SOURCE);
+        if (allDocuments.isEmpty()) {
+            return 1D;
+        }
+
+        var dbEntry = globalWordFrequencyRepository.findOneByWord(word);
+        var amountOfDocs = 0L;
+        if (!dbEntry.isEmpty()) {
+            amountOfDocs = dbEntry.get().getFrequency();
+        }
+
+        var idf = Math.log(allDocuments.size() / (double) amountOfDocs);
+        
+        var tf = 1D;
+        return tf * idf;
+    }
+
 
 }

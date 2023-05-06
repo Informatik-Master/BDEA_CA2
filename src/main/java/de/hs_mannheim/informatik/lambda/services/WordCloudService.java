@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import com.kennycason.kumo.CollisionMode;
-import com.kennycason.kumo.bg.CircleBackground;
+import com.kennycason.kumo.bg.RectangleBackground;
 import com.kennycason.kumo.font.scale.SqrtFontScalar;
 import com.kennycason.kumo.palette.ColorPalette;
 
@@ -25,37 +26,39 @@ import scala.Tuple2;
 @Service
 public class WordCloudService {
 
-    @Autowired
-    SparkSession sparkSession;
+        @Autowired
+        SparkSession sparkSession;
 
-    @Autowired
-    DocumentRepository documentRepository;
+        @Autowired
+        DocumentRepository documentRepository;
 
-    public WordCloud generateWordCloud(final String source) {
-        var wordFrequenciesTup = sparkSession.read().textFile(source)
-                .javaRDD().flatMap(
-                        s -> Arrays.asList(s.split("\\W+")).iterator())
-                .map(String::trim)
-                .filter(v -> v.length() > 3)
-                .map(String::toUpperCase)
-                .mapToPair(
-                        token -> new Tuple2<>(token, 1))
-                .reduceByKey((x, y) -> x + y)
-                .collect();// normalizer
-        // TF-IDF
+        public List<WordFrequency> getTf(final String source) {
+                var wordFrequenciesTup = sparkSession.read().textFile(source)
+                                .javaRDD().flatMap(
+                                                s -> Arrays.asList(s.split("\\W+")).iterator())
+                                .map(String::trim)
+                                .filter(v -> v.length() > 3)
+                                .map(String::toUpperCase)
+                                .mapToPair(
+                                                token -> new Tuple2<>(token, 1))
+                                .reduceByKey((x, y) -> x + y)
+                                .collect();// normalizer
 
-        // TODO: WordFrequency is not serializable
-        var wordFrequencies = wordFrequenciesTup.stream().map(t -> new WordFrequency(t._1, t._2))
-                .collect(Collectors.toList());
+                return wordFrequenciesTup.stream().map(t -> new WordFrequency(t._1, t._2))
+                                .collect(Collectors.toList());
+        }
 
-        final var dimension = new Dimension(600, 600);
-        final var wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
-        wordCloud.setPadding(2);
-        wordCloud.setBackground(new CircleBackground(300));
-        wordCloud.setColorPalette(new ColorPalette(new Color(0x4055F1), new Color(0x408DF1), new Color(0x40AAF1),
-                new Color(0x40C5F1), new Color(0x40D3F1), new Color(0xFFFFFF)));
-        wordCloud.setFontScalar(new SqrtFontScalar(8, 50));
-        wordCloud.build(wordFrequencies);
-        return wordCloud;
-    }
+        public WordCloud generateWordCloud(final List<WordFrequency> tf) {
+                final var dimension = new Dimension(1200, 1200);
+                final var wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
+                wordCloud.setPadding(2);
+                wordCloud.setBackground(new RectangleBackground(dimension));
+                wordCloud.setBackgroundColor(Color.WHITE);
+                wordCloud.setColorPalette(
+                                new ColorPalette(new Color(0x0C1821), new Color(0x1B2A41), new Color(0x0D6EFD),
+                                                new Color(0x228FA8), new Color(0x0B7A75)));
+                wordCloud.setFontScalar(new SqrtFontScalar(8, 75));
+                wordCloud.build(tf);
+                return wordCloud;
+        }
 }

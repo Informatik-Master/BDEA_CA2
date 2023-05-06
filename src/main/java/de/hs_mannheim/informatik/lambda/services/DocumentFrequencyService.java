@@ -7,7 +7,6 @@ import scala.Tuple2;
 import java.util.Arrays;
 import java.util.stream.StreamSupport;
 
-import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -24,9 +24,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +32,108 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+* {
+  color: rgb(34, 43, 69);
+}
+
+.App {
+  height: 100%;
+  background-color: rgb(237, 241, 247);
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(44, 51, 73, 0.1) 0 8px 16px 0;
+}
+
+.Content {
+  padding: 30px;
+  background-color: rgb(237, 241, 247);
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: rgba(44, 51, 73, 0.1) 0 8px 16px 0;
+  width: 100%;
+}
+
+.card-header {
+  padding: 1rem;
+  border-bottom: 1px solid rgb(237, 241, 247);
+  background-color: white;
+}
+
+.card-body {
+  padding: 1rem;
+  background-color: white;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  min-width: 400px;
+}
+
+.dropzone {
+  border-radius: 4px;
+  color: rgb(237, 241, 247);
+  border: 2px solid;
+}
+
+.dropzone-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+
+.loader-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 768px;
+  }
+  .card-body {
+    max-width: 768px;
+    max-height: 768px;
+  }
+}
+
+
+@media (min-width: 1280px) {
+  .card {
+    max-width: 1280px;
+  }
+  .card-body {
+    max-width: 1280px;
+    max-height: 1280px;
+  }
+}
+
+img {
+  width: 100%;
 }

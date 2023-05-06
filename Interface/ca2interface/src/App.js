@@ -1,22 +1,25 @@
-import './App.css';
-import HeaderComponent from './components/HeaderComponent';
-import { Routes, Route} from 'react-router-dom';
-import DocFreqComponent from './components/DocFreqComponent';
-import FilesUploadComponent from './components/FilesUploadComponent';
-import GlobalTagCLoudComponent from './components/GlobalTagCloudComponent';
+import "./App.css";
+import HeaderComponent from "./components/HeaderComponent";
+import { Routes, Route } from "react-router-dom";
+import DocFreqComponent from "./components/DocFreqComponent";
+import FilesUploadComponent from "./components/FilesUploadComponent";
+import GlobalTagCloudComponent from "./components/GlobalTagCloudComponent";
+import { Toaster } from 'react-hot-toast';
 
-
-function App() {  
-
+function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<HeaderComponent />}/>
-        <Route path="/upload" element={<GlobalTagCLoudComponent />}/>
-        <Route path="/tag-clouds" element={<DocFreqComponent />}/>
-      </Routes>
+      <HeaderComponent />
+      <Toaster/>
+      <div className="Content">
+        <Routes>
+          <Route path="/" element={<FilesUploadComponent />} />
+          <Route path="/global" element={<GlobalTagCloudComponent />} />
+          <Route path="/freq" element={<DocFreqComponent />} />
+        </Routes>
+      </div>
     </div>
-    );
-  }
+  );
+}
 
 export default App;

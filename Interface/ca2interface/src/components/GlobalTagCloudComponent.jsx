@@ -1,40 +1,63 @@
 import React, { useState, useEffect } from "react";
 import FileService from "../api/services";
+import toast from "react-hot-toast";
 
 function GlobalTagCLoudComponent() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(undefined);
 
   useEffect(() => {
-    const refreshImage = () => {
-      FileService.getWordCloudFromAllFiles().then((response) => {
+    const refreshImage = async () => {
+      try {
+        const response = await FileService.getWordCloudFromAllFiles();
         let url = URL.createObjectURL(response.data);
         setData(url);
-      });
+      } catch {}
     };
     refreshImage();
-    setInterval(() => {
+    var i = setInterval(() => {
       refreshImage();
     }, 10_000);
+    return () => clearInterval(i);
   }, []);
 
-  const handleButtonClick = () => FileService.createWordCloudFromAllFiles();
+  const handleButtonClick = async () => {
+    toast("Batch triggered", {
+      duration: 4000,
+      position: "top-right",
+      icon: "✅",
+      style: {
+        padding: "15px",
+      },
+      iconTheme: {
+        primary: "#000",
+        secondary: "#fff",
+      },
+    });
+    await FileService.createWordCloudFromAllFiles();
+  };
 
   return (
-    <div>
-      <h3 className="text-center">Global Tag Cloud</h3>
-      <br></br>
-      <button
-        className="btn btn-success btn-sm mt-3"
-        type="submit"
-        onClick={handleButtonClick}
+    <div className="card">
+      <div
+        className="card-header"
+        style={{ display: "flex", flexDirection: "column" }}
       >
-        Get Global Tag Cloud
-      </button>
-      <div>
+        <h1>Global Tag Cloud</h1>
+        {
+          <button
+            className="btn btn-primary btn-sm mt-3"
+            type="submit"
+            onClick={handleButtonClick}
+          >
+            Run Tag Cloud Batch
+          </button>
+        }
+      </div>
+      <div className="card-body">
         {data ? (
           <img src={data} alt="Tag Cloud" />
         ) : (
-          <p>Waiting for tag cloud...</p>
+          <span>No global word cloud available yet.</span>
         )}
       </div>
     </div>

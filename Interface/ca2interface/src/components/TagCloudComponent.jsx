@@ -12,9 +12,7 @@ function TagCloudComponent(props) {
     }, []);
 
     return (
-      <div>
-        <img src={data} alt="Tag Cloud" />
-      </div>
+        <img src={data} alt="Tag Cloud" style={{height: '100%', width: '100%'}} />
     );
 }
   

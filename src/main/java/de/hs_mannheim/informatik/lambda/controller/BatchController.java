@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import de.hs_mannheim.informatik.lambda.entities.Document;
 import de.hs_mannheim.informatik.lambda.entities.GlobalWordFrequency;
+import de.hs_mannheim.informatik.lambda.entities.TermFrequency;
 import de.hs_mannheim.informatik.lambda.entities.Document.DocumentType;
 import de.hs_mannheim.informatik.lambda.respository.DocumentRepository;
 import de.hs_mannheim.informatik.lambda.respository.GlobalWordFrequencyRepository;
+import de.hs_mannheim.informatik.lambda.respository.TermFrequencyRepository;
 import de.hs_mannheim.informatik.lambda.services.DocumentFrequencyService;
 import de.hs_mannheim.informatik.lambda.services.FSService;
 import de.hs_mannheim.informatik.lambda.services.WordCloudService;
@@ -42,6 +44,9 @@ public class BatchController {
     DocumentFrequencyService documentFrequencyService;
 
     @Autowired
+    TermFrequencyRepository termFrequencyRepository;
+
+    @Autowired
     FSService fsService;
 
     ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
@@ -51,7 +56,8 @@ public class BatchController {
         this.executor.submit(() -> {
             var filename = UUID.randomUUID().toString() + ".PNG";
             var target = fsService.getTargetDirectory().resolve(filename).toString();
-            var wordCloud = wordCloudService.generateWordCloud(fsService.getSourceDirectory().toString());
+            var tf = wordCloudService.getTf(fsService.getSourceDirectory().toString());
+            var wordCloud = wordCloudService.generateWordCloud(tf);
 
             wordCloud.writeToFile(target);
 
@@ -60,7 +66,14 @@ public class BatchController {
             document.setDocumentType(Document.DocumentType.OVERALL_TARGET);
             document.setWarehouseFilename(target);
             document.setContentType("image/png");
-            documentRepository.save(document);
+            var storedDocument = documentRepository.save(document);
+                termFrequencyRepository.saveAll(tf.stream().map(tuple -> {
+                    var termFrequency = new TermFrequency();
+                    termFrequency.setWord(tuple.getWord());
+                    termFrequency.setFrequency(tuple.getFrequency());
+                    termFrequency.setSource(storedDocument);
+                    return termFrequency;
+                }).collect(Collectors.toList()));
         });
         var documents = documentRepository.findByDocumentTypeOrderByIdDesc(DocumentType.SOURCE);
         documents.stream().forEach(d -> {
@@ -69,7 +82,9 @@ public class BatchController {
                 var fullStorageLocationOfTargetFile = fsService.getTargetDirectory()
                         .resolve(targetFileName);
 
-                var wordCloud = wordCloudService.generateWordCloud(d.getWarehouseFilename());
+                var tf = wordCloudService.getTf(d.getWarehouseFilename());
+
+                var wordCloud = wordCloudService.generateWordCloud(tf);
                 wordCloud.writeToFile(fullStorageLocationOfTargetFile.toString());
 
                 var document = new Document();
@@ -78,7 +93,14 @@ public class BatchController {
                 document.setWarehouseFilename(fullStorageLocationOfTargetFile.toString());
                 document.setDocumentType(DocumentType.TARGET);
                 document.setSource(d);
-                documentRepository.save(document);
+                var storedDocument = documentRepository.save(document);
+                termFrequencyRepository.saveAll(tf.stream().map(tuple -> {
+                    var termFrequency = new TermFrequency();
+                    termFrequency.setWord(tuple.getWord());
+                    termFrequency.setFrequency(tuple.getFrequency());
+                    termFrequency.setSource(storedDocument);
+                    return termFrequency;
+                }).collect(Collectors.toList()));
             });
         });
 

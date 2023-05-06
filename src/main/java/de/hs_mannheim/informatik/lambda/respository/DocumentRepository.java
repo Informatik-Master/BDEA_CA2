@@ -14,4 +14,5 @@ public interface DocumentRepository extends JpaRepository<Document, Long>{
     public Optional<Document> findFirstByDocumentTypeOrderByIdDesc(Document.DocumentType type);
 
     public List<Document> findByDocumentTypeOrderByIdDesc(Document.DocumentType type);
+
 }
