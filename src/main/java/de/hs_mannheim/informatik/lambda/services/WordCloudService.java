@@ -56,7 +56,7 @@ public class WordCloudService {
         }
 
         public WordCloud generateWordCloud(final List<WordFrequency> tf) {
-                final var dimension = new Dimension(1200, 1200);
+                final var dimension = new Dimension(600, 600);
                 final var wordCloud = new WordCloud(dimension, CollisionMode.PIXEL_PERFECT);
                 wordCloud.setPadding(2);
                 wordCloud.setBackground(new RectangleBackground(dimension));
@@ -64,7 +64,7 @@ public class WordCloudService {
                 wordCloud.setColorPalette(
                                 new ColorPalette(new Color(0x0C1821), new Color(0x1B2A41), new Color(0x0D6EFD),
                                                 new Color(0x228FA8), new Color(0x0B7A75)));
-                wordCloud.setFontScalar(new SqrtFontScalar(8, 75));
+                wordCloud.setFontScalar(new SqrtFontScalar(8, 50));
                 wordCloud.build(tf);
                 return wordCloud;
         }
