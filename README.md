@@ -12,3 +12,6 @@ Die Anwendung kann mit dem folgenden Befehl gestartet werden und ist anschließe
 ```bash
 docker-compose up
 ```
+
+> Docker verwendet die Maven-Distribution aus diesem Repository. Damit die Container bauen können, muss die mvnw-Datei Linux-Zeilenumbrüche haben (LF). Je nach Git-Einstellunge werden diese womöglich bei einem clone überschrieben.
+
